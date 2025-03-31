@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { useState } from 'react'
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import Avatar from 'react-avatar';
-import axios from 'axios';
+import axios from 'axios'
+import { MdAccountCircle } from "react-icons/md";
 import "../Style/Signup.css"
 
 export const Signup = () => {
@@ -18,24 +19,32 @@ export const Signup = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setSign((prevState) => ({
+    setSign(prevState => ({
       ...prevState,
-      [name]: value,
+      [name]: value
     }));
-  };
+  }
 
   const handlefilesubmit = (e) => {
     const file = e.target.files[0];
+    console.log("File selected:", file);
 
     if (file) {
       const filepath = URL.createObjectURL(file);
       setAvatar(file);
-      console.log(filepath);
+      console.log("File path:", filepath);
+    } else {
+      console.error("No file selected");
     }
-  };
+  }
 
   const handlesubmit = async (e) => {
     e.preventDefault();
+    if (!avatar) {
+      console.error("No avatar file selected");
+      return;
+    }
+
     const formData = new FormData();
 
     formData.append('Name', sign.Name);
@@ -45,110 +54,117 @@ export const Signup = () => {
 
     const config = {
       headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    };
+        'Content-Type': 'multipart/form-data'
+      }
+    }
 
-    axios
-      .post('http://localhost:3000/create-user', formData, config)
-      .then((response) => {
-        console.log('User created:', response.data);
-      })
-      .catch((error) => {
-        console.error('There was an error!', error);
-      });
-  };
+    try {
+      const response = await axios.post('http://localhost:3000/create-user', formData, config);
+      console.log('User created:', response.data);
+    } catch (error) {
+      console.error('There was an error!', error);
+    }
+  }
 
   return (
     <div className="signup-container">
-      <div className="signup-card">
-        <h1>Sign Up!</h1>
-        <form onSubmit={handlesubmit} className="space-y-6">
-          <div className="form-group">
-            <label htmlFor="Name" className="block text-sm font-medium text-gray-700">Name</label>
+      <div className="signup-form-container">
+        <h1 className="signup-heading">Sign Up!</h1>
+        <form className="signup-form" onSubmit={handlesubmit}>
+          <div className="signup-input-group">
+            <label htmlFor="Name" className="text-sm font-medium text-gray-700">Name</label>
             <input
               type="text"
               name="Name"
               value={sign.Name}
               onChange={handleChange}
               required
+              className="signup-input"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="Email" className="block text-sm font-medium text-gray-700">Email</label>
+
+          <div className="signup-input-group">
+            <label htmlFor="Email" className="text-sm font-medium text-gray-700">Email</label>
             <input
               type="email"
               name="Email"
               value={sign.Email}
               onChange={handleChange}
               required
+              className="signup-input"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="Password" className="block text-sm font-medium text-gray-700">Password</label>
+
+          <div className="signup-input-group">
+            <label htmlFor="Password" className="text-sm font-medium text-gray-700">Password</label>
             <input
-              type={visible ? 'text' : 'password'}
+              type={visible ? "text" : "password"}
               name="Password"
               value={sign.Password}
               onChange={handleChange}
               required
+              className="signup-input"
             />
             {visible ? (
               <AiOutlineEyeInvisible
-                className="password-icon"
+                className="password-visibility-icon"
                 onClick={() => setVisible(false)}
                 size={24}
               />
             ) : (
               <AiOutlineEye
-                className="password-icon"
+                className="password-visibility-icon"
                 onClick={() => setVisible(true)}
                 size={24}
               />
             )}
           </div>
-          <div className="form-group">
-            <label htmlFor="ConfirmPassword" className="block text-sm font-medium text-gray-700">Confirm Password</label>
+
+          <div className="signup-input-group">
+            <label htmlFor="ConfirmPassword" className="text-sm font-medium text-gray-700">Confirm Password</label>
             <input
-              type={visible ? 'text' : 'password'}
+              type={visible ? "text" : "password"}
               name="ConfirmPassword"
               value={sign.ConfirmPassword}
               onChange={handleChange}
               required
+              className="signup-input"
             />
           </div>
 
-          <div className="avatar-upload">
-            <span>
-              {avatar ? (
-                <img src={URL.createObjectURL(avatar)} alt="avatar" />
-              ) : (
-                <Avatar name="Foo Bar" className="h-8 w-8" />
-              )}
-            </span>
-            <label htmlFor="Fileinput">
-              Upload your photo
-              <input
-                type="file"
-                name="avatar"
-                id="file-input"
-                accept=".jpg,.png,.jpeg"
-                onChange={handlefilesubmit}
-                className="sr-only"
-              />
-            </label>
+          <div>
+            <label htmlFor="avatar" className='block text-sm font-medium text-gray-700'></label>
+            <div className='upload-avatar-container'>
+              <span className='avatar-preview'>
+                {avatar ? (<img src={URL.createObjectURL(avatar)} alt="Avatar" />) : (<MdAccountCircle className="h-8 w-8" />)}
+              </span>
+              <label htmlFor="file-input" className='upload-avatar-button'>
+                <span>Upload your photo</span>
+                <input
+                  type="file"
+                  name="avatar"
+                  id="file-input"
+                  accept='.jpg,.png,.jpeg'
+                  onChange={handlefilesubmit}
+                  className='sr-only'
+                />
+              </label>
+            </div>
           </div>
 
-          <div className="checkbox-group">
-            <input type="checkbox" value={agree} onChange={() => setAgree((prev) => !prev)} />
+          <div className="signup-checkbox">
+            <input type="checkbox" value={agree} onChange={() => setAgree(prev => !prev)} />
             <label htmlFor="terms" className="text-sm text-gray-600">I agree to the terms and conditions</label>
           </div>
-          <button type="submit" className="submit-btn">
+
+          <button
+            type="submit"
+            className="signup-submit-btn"
+          >
             Submit
           </button>
-          <p className="login-link">
-            Already a member? <a href="">Log in</a>
-          </p>
+
+          <p className="login-link">Already a member? <a href="">Log in</a></p>
         </form>
       </div>
     </div>

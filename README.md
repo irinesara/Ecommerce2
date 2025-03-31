@@ -3,8 +3,7 @@
 This is a MERN stack-based eCommerce application built as part of a learning project.  
 
 ## Milestone 1: Project Overview  
-
- Learning Goals  
+Learning Goals  
 - Understand the MERN stack structure  
 - Learn how eCommerce applications work  
 - Set up the GitHub repository for this project  
@@ -20,22 +19,18 @@ Features Planned
 - **Frontend (React.js)** → Displays products and user interactions  
 - **Database (MongoDB)** → Stores products, users, and orders  
 
-
 ## Milestone 2: Frontend & Login Page  
- - Set up the React frontend using `create-react-app`.  
- - Built the login page with proper styling using regular CSS.  
- - Ensured the UI is responsive and user-friendly.  
-
-
-
-##  Milestone 3: Backend Setup & Database Connection  
- - Structured the backend with separate folders for models, routes, controllers, and middleware.  
- - Set up an Express.js server and made it listen on `PORT 5000`.  
- - Connected the backend to MongoDB for data storage.  
- - Implemented basic error handling to improve debugging and stability.  
-
-
- ##  Milestone 4: User Model, Controller & File Uploads  
+- Set up the React frontend using `create-react-app`.  
+- Built the login page with proper styling using regular CSS.  
+- Ensured the UI is responsive and user-friendly.  
+ 
+ ##  Milestone 3: Backend Setup & Database Connection  
+- Structured the backend with separate folders for models, routes, controllers, and middleware.  
+- Set up an Express.js server and made it listen on `PORT 5000`.  
+- Connected the backend to MongoDB for data storage.  
+- Implemented basic error handling to improve debugging and stability.  
+ 
+  ##  Milestone 4: User Model, Controller & File Uploads  
 - Created a **User Model** to define how user data is stored in MongoDB.  
 - Implemented a **User Controller** to manage user-related operations (like registration and fetching user data).  
 - Configured **Multer** for handling file uploads (e.g., profile pictures).  
@@ -45,6 +40,11 @@ Features Planned
 - Created a Sign-Up Page with fields for name, email, and password.
 - Implemented form validation to ensure correct inputs.
 - Styled the page using CSS for a clean and user-friendly design.
+
+## Milestone 6: Secure Signup Backend
+- Created a backend endpoint for user signup.
+- Implemented bcrypt to encrypt passwords before storing them in the database.
+- Stored user data securely in MongoDB.
 
 
 
