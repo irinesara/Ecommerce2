@@ -1,12 +1,17 @@
-import React from "react";
-import Login from "./Components/Login";
+import './App.css'
+import { Route, Routes } from 'react-router-dom'
+import { Login } from './Components/Login'
 
 function App() {
+  
+
   return (
-    <div>
-      <Login />
-    </div>
-  );
+    <>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </>
+  )
 }
 
-export default App;
+export default App

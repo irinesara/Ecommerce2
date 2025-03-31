@@ -1,64 +1,162 @@
-/* Full-page styling */
-.login-container {
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f2f2f2; 
+  color: #333; 
+}
+
+
+.flex {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(to right, #4facfe, #00f2fe);
-  font-family: Arial, sans-serif;
-  margin: 0; /* Remove default margin */
 }
 
-/* Centered login box */
-.login-box {
-  background: white;
+
+.bg-white {
+  background-color: white;
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  width: 350px;
-  text-align: center;
-  position: absolute;  /* Ensure it stays in the center */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Perfect centering */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
 }
 
-/* Heading */
-.login-box h2 {
-  margin-bottom: 20px;
+
+.text-3xl {
+  font-size: 1.875rem;
+  font-weight: 700;
   color: #333;
 }
 
-/* Input fields */
-.login-box input {
+
+input[type="email"],
+input[type="password"] {
   width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
+  padding: 15px;
+  margin-top: 5px;
+  border: 2px solid #ccc;
   border-radius: 5px;
+  outline: none;
   font-size: 16px;
+  transition: border-color 0.3s ease;
+  color: #333; 
 }
 
-/* Button */
-.login-box button {
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #6c63ff;
+}
+
+
+.relative {
+  position: relative;
+}
+
+.relative .react-icons {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  cursor: pointer;
+}
+
+
+.setting-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.remember input {
+  margin: 0;
+}
+
+.remember label {
+  color: #333; 
+}
+
+
+.forgot-password a {
+  color: #6c63ff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.forgot-password a:hover {
+  color: #4e47c4;
+}
+
+
+button {
   width: 100%;
-  padding: 12px;
-  background-color: #007bff;
-  color: white;
+  padding: 15px;
+  background-color: #6c63ff;
   border: none;
   border-radius: 5px;
+  color: white;
   font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-.login-box button:hover {
-  background-color: #0056b3;
+button:hover {
+  background-color: #4e47c4;
 }
 
-/* Responsive Design */
-@media (max-width: 400px) {
-  .login-box {
-    width: 90%;
+
+.newUser {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.newUser p {
+  color: #333;
+}
+
+.newUser a {
+  color: #6c63ff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.newUser a:hover {
+  color: #4e47c4;
+}
+
+
+@media (max-width: 480px) {
+  .bg-white {
+    padding: 20px;
+  }
+
+  .text-3xl {
+    font-size: 1.5rem;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    font-size: 14px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .newUser p {
+    font-size: 14px;
   }
 }

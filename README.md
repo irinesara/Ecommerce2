@@ -26,12 +26,20 @@ Features Planned
  - Built the login page with proper styling using regular CSS.  
  - Ensured the UI is responsive and user-friendly.  
 
----
+
 
 ##  Milestone 3: Backend Setup & Database Connection  
  - Structured the backend with separate folders for models, routes, controllers, and middleware.  
  - Set up an Express.js server and made it listen on `PORT 5000`.  
  - Connected the backend to MongoDB for data storage.  
  - Implemented basic error handling to improve debugging and stability.  
+
+
+ ##  Milestone 4: User Model, Controller & File Uploads  
+- Created a **User Model** to define how user data is stored in MongoDB.  
+- Implemented a **User Controller** to manage user-related operations (like registration and fetching user data).  
+- Configured **Multer** for handling file uploads (e.g., profile pictures).  
+- Updated the **README** file with Milestone 4 progress.  
+
 
 
