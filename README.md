@@ -41,5 +41,10 @@ Features Planned
 - Configured **Multer** for handling file uploads (e.g., profile pictures).  
 - Updated the **README** file with Milestone 4 progress.  
 
+## Milestone 5: Sign-Up Page
+- Created a Sign-Up Page with fields for name, email, and password.
+- Implemented form validation to ensure correct inputs.
+- Styled the page using CSS for a clean and user-friendly design.
+
 
 
