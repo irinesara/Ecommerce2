@@ -46,5 +46,13 @@ Features Planned
 - Implemented bcrypt to encrypt passwords before storing them in the database.
 - Stored user data securely in MongoDB.
 
+## Milestone 7: User Login Backend
+- In this milestone, I implemented the backend functionality for user login. The key achievements include:
+- Created a login route to authenticate users.
+- Validated user credentials by checking if the email exists in the database.
+- Used bcrypt to compare the hashed password with the user’s input.
+- Generated a JWT token upon successful authentication.
+- Handled errors for incorrect login details.
+
 
 
