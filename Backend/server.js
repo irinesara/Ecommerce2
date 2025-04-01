@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require("./src/Database/db");
+const userrouter = require('./src/Controllers/user');
 const app = express();
 
 require('dotenv').config({
@@ -18,6 +19,7 @@ app.listen(port, async() => {
     console.error(error);
   }
 });
+app.use('/auth',userrouter)
 
 app.get('/', (req, res) => {    
     res.send('Hello World!');
